@@ -1,0 +1,15 @@
+<h1 [ngClass]="{
+    'gray': h1Style,
+    'large': h1Style
+}"
+
+>Home</h1> <!-- [class.gray]="h1Style" -->
+
+<button (click)="firstClick()">Click Me</button>
+
+<ul *ngIf="users">
+    <li *ngFor="let user of users.data">
+        <img [src]="user.avatar"> <!--[src] -> property binding on the source attribute (binding it to users.avatar) -->
+        <p>{{user.first_name}} {{user.last_name}}</p>
+    </li>
+</ul>

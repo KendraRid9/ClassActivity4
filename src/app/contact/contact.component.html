@@ -1,0 +1,38 @@
+<h1>Contact</h1>
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()"> <!--bind form to form group--> <!-- ngsubmit - when form is submitted action -->
+
+  <h5 *ngIf="success">Form is Valid!</h5>
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+    <div *ngIf="submitted && messageForm.controls.name.errors" class="errors">
+      <div *ngIf="messageForm.controls.name.errors.required">Name is required</div> <!-- Error for specific error (we only used required )-->
+
+    </div>
+  </label>
+
+  <label>
+      Message:
+      <textarea type="text" formControlName="message"></textarea>
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="errors">
+        <div *ngIf="messageForm.controls.message.errors.required">Name is required</div> <!-- Error for specific error (we only used required )-->
+  
+      </div>
+    </label>
+
+    <input type="submit" value="Send Message" class="cta">
+
+  </form>
+  <br>
+  <br>
+  <br>
+
+  <div *ngIf="submitted" class="results">
+    <strong>Name:</strong>
+    <span>{{ messageForm.controls.name.value }}</span>
+    <br>
+    <strong>Message:</strong>
+    <span>{{ messageForm.controls.message.value }}</span>
+
+  </div>
